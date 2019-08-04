@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <input type="text"id="uname"placeholder="用户名"><br>
+ <input type="password" id="upwd" placeholder="密码"><br>
+ <input type="submit" value="登录"onclick="show()">
+ <script>
+     function show(){
+      var xhr=new XMLHttpRequest();
+      xhr.onreadystatechange=function(){
+          if(xhr.readyState==4&&xhr.status==200){
+              var result=xhr.responseText;
+              console.log(result);
+          };
+      };
+      var um=document.getElementById("uname").value;
+      var up=document.getElementById("upwd").value;
+      xhr.open("get",`/api/v1/login?uname=${um}&upwd=${up}`,true);
+      xhr.send();
+     };
+ </script>
+</body>
+</html>
